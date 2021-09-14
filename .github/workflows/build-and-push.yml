@@ -46,7 +46,7 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
       - name: Build and push
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: SimpleWebHalloWorld/webapp
+          image: simplewebapphalloworld/webapp
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
