@@ -37,11 +37,11 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Login to DockerHub
-      #   uses: docker/login-action@v1 
-      #   with:
-      #     username: ${{ secrets.USERNAME }}
-      #     password: ${{ secrets.GitHub }}
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.GitHub }}
 
       - name: Build and push
         id: docker_build
