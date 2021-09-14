@@ -21,7 +21,7 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
   #     run: dotnet build --no-restore SimpleWebHalloWorld.sln # Bygger min solution SpacePark utan att köra restore igen
     
   docker:
-    login:
+    # login:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -42,7 +42,7 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
         with:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.GitHub }}
-          
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
