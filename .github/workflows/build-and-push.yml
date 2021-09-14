@@ -27,8 +27,7 @@ jobs:
           context: ${{env.working-directory}}
           tags: |
             ghcr.io/${{ github.actor }}/webapp:${{ github.run_number }}
-
-      # ghcr.io/${{ github.actor }}/webapp:latest
+            ghcr.io/${{ github.actor }}/webapp:latest
 
 
 
