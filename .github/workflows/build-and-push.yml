@@ -21,7 +21,7 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
       run: dotnet build --no-restore SimpleWebHalloWorld.sln # Bygger min solution SpacePark utan att köra restore igen
     
   docker:
-    # login:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
