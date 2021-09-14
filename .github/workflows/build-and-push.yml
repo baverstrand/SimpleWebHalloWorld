@@ -51,7 +51,7 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
           context: ${ {env.working-directory} }/dirre
           tags: |
             ghcr.io/${{ github.actor }}/webapp:latest
-            ghcr.io/${{ github.actor }}/webapp:${ { github.run_number } }
+            ghcr.io/${{ github.actor }}/webapp:${{ github.run_number }}
 
 
       # - name: Login to DockerHub
