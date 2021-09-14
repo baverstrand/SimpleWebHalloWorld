@@ -6,19 +6,19 @@ on:
       - 'master'
 
 jobs: # Här nedanför kommer det som skall utföras när min action triggas
-  # build: 
-  #   runs-on: ubuntu-latest # Miljön min solution skall byggas i 
-  #   steps: 
-  #   - name: Checkout
-  #     uses: actions/checkout@v2 
-  #   - name: Setup .NET 
-  #     uses: actions/setup-dotnet@v1 
-  #     with:
-  #       dotnet-version: 5.0.x
-  #   - name: Restore 
-  #     run: dotnet restore SimpleWebHalloWorld.sln 
-  #   - name: Build
-  #     run: dotnet build --no-restore SimpleWebHalloWorld.sln # Bygger min solution SpacePark utan att köra restore igen
+  build: 
+    runs-on: ubuntu-latest # Miljön min solution skall byggas i 
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v2 
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v1 
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore 
+      run: dotnet restore SimpleWebHalloWorld.sln 
+    - name: Build
+      run: dotnet build --no-restore SimpleWebHalloWorld.sln # Bygger min solution SpacePark utan att köra restore igen
     
   docker:
     # login:
