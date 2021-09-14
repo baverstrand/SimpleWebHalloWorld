@@ -6,22 +6,7 @@ on:
       - 'master'
 
 jobs: # Här nedanför kommer det som skall utföras när min action triggas
-  # build: 
-  #   runs-on: ubuntu-latest # Miljön min solution skall byggas i 
-  #   steps: 
-  #   - name: Checkout
-  #     uses: actions/checkout@v2 
-  #   - name: Setup .NET 
-  #     uses: actions/setup-dotnet@v1 
-  #     with:
-  #       dotnet-version: 5.0.x
-  #   - name: Restore 
-  #     run: dotnet restore SimpleWebHalloWorld.sln 
-  #   - name: Build
-  #     run: dotnet build --no-restore SimpleWebHalloWorld.sln # Bygger min solution SpacePark utan att köra restore igen
-     
   docker:
-    # needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -34,9 +19,6 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v1
-
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2.7.0
