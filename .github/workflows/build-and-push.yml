@@ -5,27 +5,51 @@ on:
     branches:
       - 'master'
 
-jobs:
+jobs: # Här nedanför kommer det som skall utföras när min action triggas
+  # build: 
+  #   runs-on: ubuntu-latest # Miljön min solution skall byggas i 
+  #   steps: 
+  #   - name: Checkout
+  #     uses: actions/checkout@v2 
+  #   - name: Setup .NET 
+  #     uses: actions/setup-dotnet@v1 
+  #     with:
+  #       dotnet-version: 5.0.x
+  #   - name: Restore 
+  #     run: dotnet restore SimpleWebHalloWorld.sln 
+  #   - name: Build
+  #     run: dotnet build --no-restore SimpleWebHalloWorld.sln # Bygger min solution SpacePark utan att köra restore igen
+    
   docker:
+    login:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Login to DockerHub
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+        registry: ghcr.io
+        username: ${{ github.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+
+      - name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-      -
-        name: Build and push
+          password: ${{ secrets.GitHub }}
+          
+      - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: user/app:latest
+ 
+      
 
+        
