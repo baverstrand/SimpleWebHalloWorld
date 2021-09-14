@@ -33,9 +33,9 @@ jobs: # Här nedanför kommer det som skall utföras när min action triggas
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
-        registry: ghcr.io
-        username: ${{ github.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
 
       - name: Login to DockerHub
         uses: docker/login-action@v1 
